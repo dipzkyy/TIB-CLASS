@@ -1,0 +1,1261 @@
+/* ========== RESET & VARIABLES ========== */
+:root {
+  --primary-blue: #00bfff;
+  --secondary-blue: #0080ff;
+  --dark-bg: radial-gradient(
+    circle at top,
+    rgba(0, 0, 30, 1),
+    rgba(0, 0, 10, 1)
+  );
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --text-glow: 0 0 10px #3b82f6, 0 0 20px #60a5fa;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ========== BASE STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background: var(--dark-bg);
+  overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+body.page-loaded {
+  opacity: 1;
+}
+
+/* ========== PARTICLE STARS BACKGROUND ========== */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* ========== NAVBAR ========== */
+.nav-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #00bfff, #6a5acd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-main ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-main ul li a {
+  color: #cfd8ff;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.nav-main ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-blue),
+    var(--secondary-blue)
+  );
+  transition: width 0.3s;
+}
+
+.nav-main ul li a:hover {
+  color: #fff;
+}
+
+.nav-main ul li a:hover::after {
+  width: 100%;
+}
+
+.nav-main ul li a.active {
+  color: #fff;
+}
+
+.nav-main ul li a.active::after {
+  width: 100%;
+}
+
+/* ========== DATE IMPROVED ========== */
+#current-date {
+  font-size: 0.85rem;
+  color: #bde3ff;
+  background: rgba(0, 191, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 191, 255, 0.3);
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+}
+
+/* ========== SPA (SINGLE PAGE APPLICATION) STYLES ========== */
+#main-content {
+  position: relative;
+  width: 100%;
+}
+
+.page {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth transitions for page sections */
+.page-section {
+  transition: all 0.8s ease;
+}
+
+/* ========== SECTION DASAR ========== */
+.page-section {
+  min-height: 100vh;
+  padding: 6rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  position: relative;
+}
+
+.page-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ========== SECTION TITLES ========== */
+.section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, #00bfff, #6a5acd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* ========== CENTERED TEXT ========== */
+.centered {
+  text-align: center;
+}
+
+/* ========== HERO SECTION ========== */
+#hero {
+  padding-top: 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.logo-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+.title-group {
+  text-align: left;
+}
+
+.main-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.title-line {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+  display: block;
+}
+
+.title-line:nth-child(1) {
+  margin-bottom: -1rem;
+}
+
+.title-line:nth-child(2) {
+  margin-left: 2rem;
+}
+
+.title-line.accent {
+  font-size: 6rem;
+  color: #00bfff;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+  margin-left: 0;
+}
+
+.tight-margin {
+  margin-bottom: 0.5rem !important;
+}
+
+.instagram-button {
+  display: inline-flex;
+  align-items: center; /* vertikal tengah */
+  justify-content: center; /* horizontal tengah */
+  gap: 0.8rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
+}
+
+.instagram-button:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 6px 25px rgba(225, 48, 108, 0.6);
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== TYPEWRITER ========== */
+.typewriter-container {
+  position: relative;
+  white-space: pre-wrap;
+  overflow: hidden;
+  min-height: 150px;
+  font-size: 1.1rem;
+  color: #bfefff;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  line-height: 1.6;
+  animation: blink 0.7s infinite;
+}
+
+.typewriter-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 191, 255, 0.3),
+    rgba(0, 191, 255, 0.6),
+    rgba(0, 191, 255, 0.3),
+    transparent
+  );
+  animation: glowSweep 3s ease-in-out infinite;
+  border-radius: 1rem;
+}
+
+@keyframes glowSweep {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    border-color: var(--primary-blue);
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* ========== INTERACTIVE MENU ========== */
+#interactive-menu {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  scroll-margin-top: 2rem;
+}
+
+.circle-menu-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.circle-menu {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #bde3ff;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  z-index: 10;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.circle-menu:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
+}
+
+.circle-menu.active {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ripple & menu buttons */
+.ripple-effect {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ripple-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(0, 191, 255, 0.3);
+  opacity: 0;
+  animation: rippleExpand 1.2s ease-out;
+}
+
+/* menu buttons basic */
+.menu-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 15;
+}
+
+.menu-buttons.menu-open {
+  display: flex;
+}
+
+.menu-btn {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(90deg, #007bff, #00cfff);
+  padding: 10px 20px;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition);
+  position: absolute;
+  font-size: 0.9rem;
+  z-index: 20;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  min-width: 120px;
+  text-align: center;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 191, 255, 0.8);
+}
+
+/* ========== CARDS/GRIDS ========== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card-glow {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-blue),
+    var(--secondary-blue),
+    var(--primary-blue)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.7;
+  animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+/* ========== ABOUT SECTION ========== */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #cfd8ff;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* ========== CAROUSEL STYLES ========== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.indicator.active {
+  background: white;
+}
+
+/* ========== GALLERY STYLES ========== */
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+}
+
+.gallery-container .page-header {
+  position: relative;
+  padding-top: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
+}
+
+.gallery-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gallery-info {
+  padding: 1.5rem;
+}
+
+.gallery-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.gallery-info p {
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.gallery-date {
+  font-size: 0.8rem;
+  color: #bde3ff;
+}
+
+/* ========== MEMBERS PAGE STYLES ========== */
+.members-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+}
+
+.members-container .page-header {
+  position: relative;
+  padding-top: 2rem;
+}
+
+/* ========== FLIP CARD UNTUK ANGGOTA ========== */
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 180px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.flip-card-front::before,
+.flip-card-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(45deg, #00bfff, #0080ff, #00bfff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.7;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(0, 191, 255, 0.1);
+}
+
+/* ========== PENGURUS SECTION ========== */
+.pengurus-section {
+  margin-bottom: 3rem;
+}
+
+.pengurus-section .section-title {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Grid untuk Pengurus — 4 card per baris */
+.pengurus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Badge Pengurus */
+.pengurus-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Foto Profil - Crop Bundar */
+.member-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #00bfff, #0080ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photo-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.member-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.member-role {
+  color: var(--primary-blue);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.member-status {
+  color: #bde3ff;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.flip-instruction {
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ========== GRID ANGGOTA ========== */
+.anggota-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #bde3ff;
+  font-weight: 400;
+}
+
+/* === GAYA DASAR JADWAL === */
+.jadwal-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  color: #fff;
+}
+
+.jadwal-container .page-header {
+  position: relative;
+  padding-top: 2rem;
+}
+
+/* === GRID UNTUK HARI === */
+.jadwal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === KARTU HARI === */
+.hari-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hari-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* === JUDUL HARI === */
+.hari-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #918c84ff;
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+/* === LIST MATA KULIAH === */
+.matkul-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* === ITEM MATA KULIAH === */
+.matkul-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.6rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  transition: background 0.3s ease;
+}
+
+.matkul-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.matkul-nama {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.matkul-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.matkul-waktu {
+  color: #9fdfff;
+}
+
+/* === TOMBOL KEMBALI === */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  margin-bottom: 2rem;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+}
+
+/* Back button positioning for SPA pages */
+.page-header .back-button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-bottom: 0;
+}
+
+/* === ANIMASI MASUK === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* aurora & footer */
+.aurora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 180, 255, 0.4),
+      transparent 70%
+    ),
+    radial-gradient(circle at 70% 70%, rgba(100, 0, 255, 0.3), transparent 70%),
+    linear-gradient(135deg, rgba(0, 0, 30, 0.8), rgba(0, 0, 10, 1));
+  animation: auroraMove 12s ease-in-out infinite alternate;
+  z-index: -3;
+}
+
+@keyframes auroraMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.footer {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 1.5rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+}
+
+/* ========== ANIMASI TAMBAHAN ========== */
+@keyframes rippleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* SPA Page transition animations */
+@keyframes pageOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pageIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-leaving {
+  animation: pageOut 0.4s ease forwards;
+}
+
+.page-entering {
+  animation: pageIn 0.6s ease 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Ensure proper scrolling for individual pages */
+.page > div {
+  min-height: 100vh;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+  .nav-main {
+    padding: 0.8rem 1rem;
+  }
+
+  .nav-main ul {
+    gap: 1rem;
+  }
+
+  .nav-main ul li a {
+    font-size: 0.85rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .title-line {
+    font-size: 3rem;
+  }
+
+  .title-line.accent {
+    font-size: 4rem;
+  }
+
+  .title-line:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-menu {
+    width: 120px;
+    height: 120px;
+  }
+
+  .menu-btn {
+    min-width: 100px;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+
+  #hero {
+    padding-top: 4rem;
+  }
+
+  .gallery-container,
+  .members-container {
+    padding: 5rem 1rem 1rem;
+  }
+
+  .carousel {
+    height: 250px;
+  }
+
+  .pengurus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .anggota-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .flip-card {
+    height: 160px;
+  }
+
+  .member-photo {
+    width: 50px;
+    height: 50px;
+    font-size: 0.9rem;
+  }
+
+  .member-name {
+    font-size: 0.85rem;
+  }
+
+  .member-role {
+    font-size: 0.75rem;
+  }
+
+  .jadwal-container {
+    padding: 2rem 1rem;
+  }
+
+  .hari-card {
+    padding: 1rem;
+  }
+
+  .matkul-detail {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  /* SPA Responsive adjustments */
+  .page-header .back-button {
+    position: relative;
+    top: auto;
+    transform: none;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .page-header {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pengurus-grid {
+    grid-template-columns: 1fr;
+  }
+}

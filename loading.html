@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loading - TI B UNISBA Blitar</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #0a0a1f, #000010);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 191, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+    }
+
+    .loading-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #00bfff, #6a5acd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #bde3ff;
+      margin-bottom: 1rem;
+    }
+
+    .progress-container {
+      width: 280px;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 3px solid #333;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+    }
+
+    .progress-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00bfff, #6a5acd);
+      transition: width 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .progress-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      pointer-events: none;
+    }
+
+    .grid-cell {
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .progress-text {
+      color: #bde3ff;
+      margin-top: 0.8rem;
+      font-weight: 600;
+    }
+
+    .progress-percent {
+      position: relative;
+      z-index: 2;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <img src="assets/logokelas.png" class="logo" alt="Logo TI B" onerror="this.style.display='none'">
+  <div class="loading-text">TI B UNISBA BLITAR</div>
+  <div class="subtitle">Teknik Informatika</div>
+  
+  <div class="progress-container">
+    <div id="fill" class="progress-inner">
+      <div id="progressPercent" class="progress-percent">0%</div>
+    </div>
+    <div class="progress-grid">
+      <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+      <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+      <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+    </div>
+  </div>
+  
+  <div id="progressText" class="progress-text">Memuat...</div>
+
+  <script>
+    const fill = document.getElementById('fill');
+    const text = document.getElementById('progressText');
+    const percent = document.getElementById('progressPercent');
+    let progress = 0;
+
+    const timer = setInterval(() => {
+      progress += Math.floor(Math.random() * 10) + 5;
+      if (progress > 100) progress = 100;
+      fill.style.width = progress + '%';
+      percent.textContent = `${progress}%`;
+      text.textContent = `Memuat... ${progress}%`;
+
+      // Efek reaktif ketika progress mencapai milestone tertentu
+      if (progress === 25 || progress === 50 || progress === 75) {
+        fill.style.background = `linear-gradient(90deg, #00bfff, #ff9900)`;
+        setTimeout(() => {
+          fill.style.background = `linear-gradient(90deg, #00bfff, #6a5acd)`;
+        }, 300);
+      }
+
+      if (progress === 100) {
+        clearInterval(timer);
+        text.textContent = 'Welcome..';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 800);
+      }
+    }, 90);
+
+    // fallback otomatis jika loading macet
+    setTimeout(() => {
+      if (progress < 100) window.location.href = 'index.html';
+    }, 7000);
+  </script>
+</body>
+</html>

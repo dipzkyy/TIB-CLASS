@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>TI B UNISBA Blitar — Beranda</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+</head>
+<body>
+  <nav class="nav-main scroll-element">
+    <div class="nav-brand">
+      <img src="assets/logokelas.png" alt="Logo TI B" class="nav-logo">
+      <span class="nav-title aurora-text">TI B CLASS</span>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="nav-menu">
+      <li><a href="#hero" class="nav-link active">Beranda</a></li>
+      <li><a href="#about" class="nav-link">Tentang Kami</a></li>
+      <li><a href="#interactive-menu" class="nav-link">Menu Interaktif</a></li>
+      <li><a href="#visi-misi" class="nav-link">Visi & Misi</a></li>
+    </ul>
+    <span id="current-date" class="date-display"></span>
+  </nav>
+
+  <canvas id="particles-js"></canvas>
+  <div class="aurora"></div>
+
+  <section id="hero" class="page-section">
+    <div class="section-content">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="logo-group scroll-element">
+            <img src="assets/logokelas.png" alt="Logo Kelas" class="logo hover-glow">
+            <img src="assets/kampus.png" alt="Logo Kampus" class="logo hover-glow">
+          </div>
+
+          <div class="title-group">
+            <h1 class="main-title scroll-element">
+              <span class="title-line">TEKNIK</span>
+              <span class="title-line">INFORMATIKA</span>
+              <span class="title-line accent">B</span>
+            </h1>
+
+            <h2 class="subtitle scroll-element tight-margin">UNISBA BLITAR</h2>
+
+            <a href="https://www.instagram.com/whois_inf_enginering1b/" target="_blank" class="instagram-button scroll-element tight-margin">
+              <span class="instagram-logo">📷</span>
+              <span class="instagram-text">Follow Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right scroll-element">
+          <div class="typewriter-container">
+            <p id="typewriterText"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Tentang Kelas TI B</h2>
+      <div class="about-content scroll-element">
+        <p>Kelas Teknik Informatika B UNISBA Blitar adalah komunitas mahasiswa yang berfokus pada pengembangan teknologi informasi dan pemrograman. Kami berkomitmen untuk menciptakan lingkungan belajar yang kolaboratif dan inovatif.</p>
+        <p>Dengan semangat "Solid, Solid, Solid!!", kami terus berusaha untuk mengembangkan kemampuan teknis dan soft skill yang diperlukan di industri teknologi modern.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="interactive-menu" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Menu Interaktif</h2>
+      <div class="circle-menu-container scroll-element">
+        <div id="circleMenu" class="circle-menu">
+          <span>Klik Saya</span>
+          <div class="menu-buttons">
+            <a href="anggota.html" class="menu-btn">👥 Anggota</a>
+            <a href="galeri.html" class="menu-btn">🖼️ Galeri</a>
+            <a href="jadwal.html" class="menu-btn">📅 Jadwal</a>
+            <a href="https://unisbablitar.ac.id" target="_blank" class="menu-btn external">🌐 Kampus</a>
+          </div>
+        </div>
+        <div class="ripple-effect"></div>
+      </div>
+      <p class="menu-instruction scroll-element centered">Tekan lingkaran untuk membuka menu navigasi</p>
+    </div>
+  </section>
+
+  <section id="visi-misi" class="page-section">
+    <div class="section-content">
+      <h2 class="section-title">Visi & Misi</h2>
+      <div class="cards-grid">
+        <div class="card-glow scroll-element">
+          <div class="card-content">
+            <h3>🎯 Visi</h3>
+            <p>Mewujudkan generasi TI B yang unggul, kreatif, dan berintegritas dalam pengembangan teknologi informasi.</p>
+          </div>
+        </div>
+
+        <div class="card-glow scroll-element">
+          <div class="card-content">
+            <h3>🚀 Misi</h3>
+            <p>Menumbuhkan semangat kolaborasi, inovasi, dan pembelajaran berbasis proyek nyata.</p>
+          </div>
+        </div>
+
+        <div class="card-glow scroll-element">
+          <div class="card-content">
+            <h3>💡 Slogan</h3>
+            <p>"Solid, Solid, Solid!!"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer scroll-element">
+    <p>© 2025 TI B UNISBA Blitar — All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

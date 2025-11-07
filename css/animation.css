@@ -1,0 +1,177 @@
+/* ========== ANIMASI MASUK UNTUK SEMUA HALAMAN ========== */
+.page-entrance { animation: pageEntrance 1s ease-out forwards; }
+@keyframes pageEntrance {
+  0% { opacity: 0; transform: translateY(50px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* scroll element */
+.scroll-element { 
+  opacity:0; 
+  transform:translateY(50px); 
+  transition: all .8s cubic-bezier(.25,.46,.45,.94); 
+}
+.scroll-element.visible{ 
+  opacity:1; 
+  transform:translateY(0) 
+}
+.scroll-element:not(.visible){ 
+  opacity:0; 
+  transform:translateY(50px) 
+}
+
+/* stagger */
+.stagger-item{ 
+  opacity:0; 
+  transform:translateY(30px); 
+  animation:staggerEntry .6s ease forwards; 
+}
+.stagger-item:nth-child(1){ animation-delay:.1s }
+.stagger-item:nth-child(2){ animation-delay:.2s }
+.stagger-item:nth-child(3){ animation-delay:.3s }
+.stagger-item:nth-child(4){ animation-delay:.4s }
+.stagger-item:nth-child(5){ animation-delay:.5s }
+.stagger-item:nth-child(6){ animation-delay:.6s }
+@keyframes staggerEntry { 
+  to{ opacity:1; transform:translateY(0) } 
+}
+
+/* page exit */
+.page-exit { animation: pageExit .5s ease forwards; }
+@keyframes pageExit { 
+  to { opacity: 0; transform: translateY(-20px); } 
+}
+
+/* flip card */
+.flip-card{ 
+  perspective:1000px; 
+  width:100%; 
+  height:200px; 
+  cursor:pointer 
+}
+.flip-card-inner{ 
+  position:relative; 
+  width:100%; 
+  height:100%; 
+  text-align:center; 
+  transition:transform .8s; 
+  transform-style:preserve-3d 
+}
+.flip-card.flipped .flip-card-inner{ 
+  transform:rotateY(180deg) 
+}
+.flip-card-front, .flip-card-back { 
+  position:absolute; 
+  width:100%; 
+  height:100%; 
+  backface-visibility:hidden; 
+  border-radius:1rem; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  justify-content:center; 
+  padding:1.5rem; 
+  background:rgba(255,255,255,0.05); 
+  backdrop-filter:blur(12px); 
+  border:1px solid rgba(255,255,255,0.1) 
+}
+.flip-card-front::before, .flip-card-back::before { 
+  content:""; 
+  position:absolute; 
+  top:0; 
+  left:0; 
+  right:0; 
+  bottom:0; 
+  border-radius:1rem; 
+  padding:2px; 
+  background:linear-gradient(45deg,#00bfff,#0080ff,#00bfff); 
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+  -webkit-mask-composite:xor; 
+  mask-composite:exclude; 
+  opacity:0.7 
+}
+.flip-card-back{ 
+  transform:rotateY(180deg); 
+  background:rgba(0,191,255,0.1) 
+}
+
+.member-photo{ 
+  width:80px; 
+  height:80px; 
+  border-radius:50%; 
+  margin-bottom:1rem; 
+  background:linear-gradient(45deg,#00bfff,#0080ff); 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  font-size:1.5rem; 
+  color:white; 
+  border:3px solid rgba(255,255,255,0.3); 
+  font-weight:bold 
+}
+.member-name{ 
+  font-size:1.1rem; 
+  font-weight:600; 
+  margin-bottom:.5rem; 
+  color:#fff 
+}
+.member-role{ 
+  color:var(--primary-blue); 
+  font-weight:500; 
+  font-size:.9rem 
+}
+.member-nim{ 
+  color:#bde3ff; 
+  font-size:.8rem; 
+  margin-top:.5rem 
+}
+
+.flip-instruction{ 
+  position:absolute; 
+  bottom:1rem; 
+  font-size:.7rem; 
+  color:rgba(255,255,255,0.6); 
+  animation:pulse 2s infinite 
+}
+@keyframes pulse { 
+  0%,100%{ opacity:.6 } 
+  50%{ opacity:1 } 
+}
+
+/* hover */
+.card-hover-special { 
+  transition: all .4s cubic-bezier(.175,.885,.32,1.275) 
+}
+.card-hover-special:hover { 
+  transform:translateY(-10px) scale(1.02); 
+  box-shadow:0 20px 40px rgba(0,191,255,0.3) 
+}
+
+/* entrance random */
+.entrance-random{ 
+  opacity:0; 
+  transform:translateY(50px) scale(.95); 
+  transition: all .8s cubic-bezier(.25,.46,.45,.94) 
+}
+.entrance-random.visible{ 
+  opacity:1; 
+  transform:translateY(0) scale(1) 
+}
+
+/* typewriter */
+.typewriter-container::before{ 
+  animation-duration:4s 
+}
+
+/* instagram button */
+.instagram-button{ 
+  background:linear-gradient(45deg,#333,#555) !important; 
+  padding:.6rem 1.2rem !important; 
+  font-size:.9rem !important; 
+  margin-top:1rem !important 
+}
+.instagram-button:hover{ 
+  transform:scale(1.05); 
+  box-shadow:0 6px 20px rgba(255,255,255,0.3) !important 
+}

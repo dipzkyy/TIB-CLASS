@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jadwal Kuliah — TI B UNISBA</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+</head>
+<body>
+  <!-- Untuk halaman galeri, anggota, jadwal -->
+  <nav class="nav-main">
+    <div class="nav-brand">
+      <img src="assets/logokelas.png" alt="Logo TI B" class="nav-logo">
+      <span class="nav-title">TI B CLASS</span>
+    </div>
+    <span id="current-date"></span>
+  </nav>
+
+  <canvas id="particles-js"></canvas>
+  <div class="aurora"></div>
+
+  <main class="page-entrance">
+    <div class="jadwal-container">
+      <a href="index.html" class="back-button">← Kembali ke Beranda</a>
+
+      <div class="page-header">
+        <h1 class="page-title">📅 Jadwal Kuliah</h1>
+        <p class="page-subtitle">Jadwal perkuliahan kelas 1 TI B — Semester Ganjil</p>
+      </div>
+
+      <div class="jadwal-grid">
+
+        <!-- SENIN -->
+        <div class="hari-card">
+          <h2 class="hari-title">Senin</h2>
+          <ul class="matkul-list">
+            <li class="matkul-item">
+              <div class="matkul-nama">Logika Informatika</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 08</span>
+                <span class="matkul-waktu">🕐 10.30 – 12.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SELASA -->
+        <div class="hari-card">
+          <h2 class="hari-title">Selasa</h2>
+          <ul class="matkul-list">
+            <li class="matkul-item">
+              <div class="matkul-nama">Bahasa Indonesia</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 06</span>
+                <span class="matkul-waktu">🕐 10.30 – 12.00</span>
+              </div>
+            </li>
+            <li class="matkul-item">
+              <div class="matkul-nama">Pengantar Teknologi Informasi</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 06</span>
+                <span class="matkul-waktu">🕐 12.30 – 14.00</span>
+              </div>
+            </li>
+            <li class="matkul-item">
+              <div class="matkul-nama">Arsitektur dan Organisasi Komputer</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 06</span>
+                <span class="matkul-waktu">🕐 14.00 – 15.30</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RABU -->
+        <div class="hari-card">
+          <h2 class="hari-title">Rabu</h2>
+          <ul class="matkul-list">
+            <li class="matkul-item">
+              <div class="matkul-nama">Pancasila</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 07</span>
+                <span class="matkul-waktu">🕐 12.30 – 14.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- KAMIS -->
+        <div class="hari-card">
+          <h2 class="hari-title">Kamis</h2>
+          <ul class="matkul-list">
+            <li class="matkul-item">
+              <div class="matkul-nama">Pemrograman Dasar</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 07</span>
+                <span class="matkul-waktu">🕐 07.30 – 09.00</span>
+              </div>
+            </li>
+            <li class="matkul-item">
+              <div class="matkul-nama">Agama Islam</div>
+              <div class="matkul-detail">
+                <span>Ruang A2 - 07</span>
+                <span class="matkul-waktu">🕐 09.00 – 10.30</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 TI B UNISBA Blitar — All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.hari-card').forEach((el,i) => {
+        el.style.animationDelay = (i * 0.08) + 's';
+      });
+    });
+  </script>
+</body>
+</html>
