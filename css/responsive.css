@@ -1,0 +1,302 @@
+/* ========== OPTIMASI MOBILE ========== */
+@media (max-width: 768px) {
+  /* Navbar Mobile */
+  .nav-main {
+    padding: 0.8rem 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+  
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-menu li a {
+    display: block;
+    padding: 1rem;
+  }
+
+  /* Ukuran font lebih kecil untuk mobile */
+  .nav-title {
+    font-size: 1rem !important;
+  }
+  
+  .nav-logo {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  /* Hero Section Mobile */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .logo-group {
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .title-line {
+    font-size: 2.5rem !important;
+  }
+  
+  .title-line.accent {
+    font-size: 3rem !important;
+  }
+
+  .main-title {
+    gap: 0.8rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Circle menu lebih kecil */
+  .circle-menu {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .menu-btn {
+    min-width: 90px !important;
+    font-size: 0.7rem !important;
+    padding: 6px 12px !important;
+  }
+  
+  /* Cards lebih kompak */
+  .card-glow {
+    padding: 1.5rem !important;
+    min-height: 150px !important;
+  }
+  
+  /* Typewriter lebih kecil */
+  .typewriter-container {
+    font-size: 0.9rem !important;
+    padding: 1.5rem !important;
+    min-height: 120px !important;
+  }
+  
+  /* Logo lebih kecil */
+  .logo {
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  /* Padding section lebih kecil */
+  .page-section {
+    padding: 5rem 1rem 1rem !important;
+  }
+  
+  /* Footer lebih kecil */
+  .footer {
+    padding: 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Date display lebih kecil */
+  #current-date {
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0.8rem !important;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Gallery & Members mobile */
+  .gallery-container,
+  .members-container {
+    padding: 5rem 1rem 1rem;
+  }
+
+  .carousel {
+    height: 250px;
+  }
+
+  /* Members grid mobile - PERBAIKAN UNTUK CARD TIDAK GEPENG */
+  .pengurus-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .anggota-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .flip-card {
+    height: 180px !important;
+    min-height: 180px;
+  }
+
+  .member-photo {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1rem !important;
+  }
+
+  .member-name {
+    font-size: 0.8rem !important;
+    line-height: 1.2;
+  }
+
+  .member-role {
+    font-size: 0.7rem !important;
+  }
+
+  .flip-instruction {
+    font-size: 0.6rem !important;
+  }
+
+  /* Jadwal mobile */
+  .jadwal-container {
+    padding: 4rem 1rem 1rem;
+  }
+
+  .hari-card {
+    padding: 1rem;
+  }
+
+  .matkul-detail {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  /* SPA Responsive adjustments */
+  .page-header .back-button {
+    position: relative;
+    top: auto;
+    transform: none;
+    margin-bottom: 1rem;
+    display: none !important; /* Sembunyikan tombol back di mobile */
+  }
+
+  .page-header {
+    text-align: center;
+  }
+
+  /* Tampilkan back notice di mobile */
+  .back-notice {
+    display: block;
+  }
+}
+
+/* ========== TABLET OPTIMIZATIONS ========== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .pengurus-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .anggota-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .flip-card {
+    height: 190px;
+  }
+
+  /* Sembunyikan tombol back dan tampilkan notice di tablet */
+  .page-header .back-button {
+    display: none !important;
+  }
+
+  .back-notice {
+    display: block;
+  }
+}
+
+/* ========== DESKTOP STYLES ========== */
+@media (min-width: 1025px) {
+  .back-notice {
+    display: none;
+  }
+  
+  .page-header .back-button {
+    display: inline-flex !important;
+  }
+}
+
+/* ========== ENHANCED NAVIGATION FOR MOBILE ========== */
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 0;
+  }
+  
+  .nav-link {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  #current-date {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-line {
+    font-size: 2rem !important;
+  }
+  
+  .title-line.accent {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-grid {
+    gap: 1.5rem !important;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .pengurus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .anggota-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Perbaikan tambahan untuk mobile sangat kecil */
+  .flip-card {
+    height: 170px !important;
+  }
+
+  .member-photo {
+    width: 45px !important;
+    height: 45px !important;
+  }
+}

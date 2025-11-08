@@ -2,804 +2,105 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Anggota — TI B UNISBA Blitar</title>
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/animation.css" />
 </head>
 <body>
-  <!-- Untuk halaman galeri, anggota, jadwal -->
-<nav class="nav-main">
-  <div class="nav-brand">
-    <img src="assets/logokelas.png" alt="Logo TI B" class="nav-logo">
-    <span class="nav-title">TI B CLASS</span>
-  </div>
-  <span id="current-date"></span>
-</nav>
+  <nav class="nav-main">
+    <div class="nav-brand">
+      <img src="assets/logokelas.png" alt="Logo TI B" class="nav-logo">
+      <span class="nav-title">TI B CLASS</span>
+    </div>
+    
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Beranda</a></li>
+      <li><a href="anggota.html" class="nav-link active">Anggota</a></li>
+      <li><a href="galeri.html" class="nav-link">Galeri</a></li>
+      <li><a href="jadwal.html" class="nav-link">Jadwal</a></li>
+    </ul>
+    <span id="current-date" class="date-display"></span>
+  </nav>
 
   <canvas id="particles-js"></canvas>
   <div class="aurora"></div>
 
-  <main class="page-entrance">
+  <main class="page-content">
     <div class="members-container">
-      <a href="index.html" class="back-button">← Kembali ke Beranda</a>
-
       <div class="page-header">
+        <a href="index.html" class="back-button">← Kembali ke Beranda</a>
+        <p class="back-notice">Klik tombol back browser untuk kembali ke home</p>
         <h1 class="page-title">👥 Anggota Kelas 1 TI B</h1>
         <p class="page-subtitle">Mahasiswa Teknik Informatika UNISBA Blitar</p>
       </div>
 
-      <!-- STRUKTUR PENGURUS -->
+      <!-- STRUKTUR PENGURUS - TANPA FLIP -->
       <div class="pengurus-section">
         <h2 class="section-title">Struktur Pengurus Kelas</h2>
         <div class="pengurus-grid">
           <!-- Ketua -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="pengurus-badge">⭐ KETUA</div>
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Mochamad Nazar Sirot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MN</div>
-                </div>
-                <div class="member-name">Mochamad Nazar Sirot</div>
-                <div class="member-role">KETUA KELAS</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Mochamad Nazar Sirot</div>
-                <div class="member-role">KETUA KELAS</div>
-                <div class="member-status">Pengurus Kelas TI B</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
+          <div class="pengurus-card">
+            <div class="pengurus-badge">⭐ KETUA</div>
+            <div class="member-photo">
+              <img src="assets/ikon.png" alt="Mochamad Nazar Sirot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="photo-fallback" style="display:none;">MN</div>
             </div>
+            <div class="member-name">Mochamad Nazar Sirot</div>
+            <div class="member-role">KETUA KELAS</div>
           </div>
 
           <!-- Wakil Ketua -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="pengurus-badge">⭐ WAKIL</div>
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Zainun Abidin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">ZA</div>
-                </div>
-                <div class="member-name">Zainun Abidin</div>
-                <div class="member-role">WAKIL KETUA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Zainun Abidin</div>
-                <div class="member-role">WAKIL KETUA</div>
-                <div class="member-status">Pengurus Kelas TI B</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
+          <div class="pengurus-card">
+            <div class="pengurus-badge">⭐ WAKIL</div>
+            <div class="member-photo">
+              <img src="assets/ikon.png" alt="Zainun Abidin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="photo-fallback" style="display:none;">ZA</div>
             </div>
+            <div class="member-name">Zainun Abidin</div>
+            <div class="member-role">WAKIL KETUA</div>
           </div>
 
           <!-- Sekretaris -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="pengurus-badge">⭐ SEKRETARIS</div>
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Tahta Alfina Pagelaran" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">TP</div>
-                </div>
-                <div class="member-name">Tahta Alfina Pagelaran</div>
-                <div class="member-role">SEKRETARIS</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Tahta Alfina Pagelaran</div>
-                <div class="member-role">SEKRETARIS</div>
-                <div class="member-status">Pengurus Kelas TI B</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
+          <div class="pengurus-card">
+            <div class="pengurus-badge">⭐ SEKRETARIS</div>
+            <div class="member-photo">
+              <img src="assets/ikon.png" alt="Tahta Alfina Pagelaran" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="photo-fallback" style="display:none;">TP</div>
             </div>
+            <div class="member-name">Tahta Alfina Pagelaran</div>
+            <div class="member-role">SEKRETARIS</div>
           </div>
 
           <!-- Bendahara -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="pengurus-badge">⭐ BENDAHARA</div>
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Jazilatun Nabilla" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">JN</div>
-                </div>
-                <div class="member-name">Jazilatun Nabilla</div>
-                <div class="member-role">BENDAHARA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Jazilatun Nabilla</div>
-                <div class="member-role">BENDAHARA</div>
-                <div class="member-status">Pengurus Kelas TI B</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
+          <div class="pengurus-card">
+            <div class="pengurus-badge">⭐ BENDAHARA</div>
+            <div class="member-photo">
+              <img src="assets/ikon.png" alt="Jazilatun Nabilla" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="photo-fallback" style="display:none;">JN</div>
             </div>
+            <div class="member-name">Jazilatun Nabilla</div>
+            <div class="member-role">BENDAHARA</div>
           </div>
         </div>
       </div>
 
-      <!-- ANGGOTA LENGKAP -->
+      <!-- ANGGOTA LENGKAP - DENGAN FLIP -->
       <div class="anggota-section">
         <h2 class="section-title">Anggota Lengkap Kelas</h2>
         <div class="anggota-grid">
-          <!-- Daftar Anggota -->
-          <!-- 1 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Adelia Wahyu Bima Sakti" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">AW</div>
-                </div>
-                <div class="member-name">Adelia Wahyu Bima Sakti</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Adelia Wahyu Bima Sakti</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Aisha Calluella Putri Wijaya" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">AC</div>
-                </div>
-                <div class="member-name">Aisha Calluella Putri Wijaya</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Aisha Calluella Putri Wijaya</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Alifiyan Rezky Pratama" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">AR</div>
-                </div>
-                <div class="member-name">Alifiyan Rezky Pratama</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Alifiyan Rezky Pratama</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Aswin Akmal Rizantha" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">AA</div>
-                </div>
-                <div class="member-name">Aswin Akmal Rizantha</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Aswin Akmal Rizantha</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Bayu Putra Pratama" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">BP</div>
-                </div>
-                <div class="member-name">Bayu Putra Pratama</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Bayu Putra Pratama</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Devika Novalina" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">DN</div>
-                </div>
-                <div class="member-name">Devika Novalina</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Devika Novalina</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Dhia Al Fitria" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">DA</div>
-                </div>
-                <div class="member-name">Dhia Al Fitria</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Dhia Al Fitria</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 8 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Dila Rahma Wakhida" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">DR</div>
-                </div>
-                <div class="member-name">Dila Rahma Wakhida</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Dila Rahma Wakhida</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 9 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Diva Islamy Rizky Akbar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">DI</div>
-                </div>
-                <div class="member-name">Diva Islamy Rizky Akbar</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Diva Islamy Rizky Akbar</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 10 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Ema Netasari" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">EN</div>
-                </div>
-                <div class="member-name">Ema Netasari</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Ema Netasari</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 11 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Fajar Dwi Prayitno" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">FD</div>
-                </div>
-                <div class="member-name">Fajar Dwi Prayitno</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Fajar Dwi Prayitno</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 12 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Febrinda Eka Prasetyo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">FE</div>
-                </div>
-                <div class="member-name">Febrinda Eka Prasetyo</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Febrinda Eka Prasetyo</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 13 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Fibi Dita Salsabilla" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">FD</div>
-                </div>
-                <div class="member-name">Fibi Dita Salsabilla</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Fibi Dita Salsabilla</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 14 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Fidlela Latifa Salsabila" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">FL</div>
-                </div>
-                <div class="member-name">Fidlela Latifa Salsabila</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Fidlela Latifa Salsabila</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 15 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Gladis Ayu Diapitaloka" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">GA</div>
-                </div>
-                <div class="member-name">Gladis Ayu Diapitaloka</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Gladis Ayu Diapitaloka</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 16 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Meisya Rozzaaqy Widya Putri" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MR</div>
-                </div>
-                <div class="member-name">Meisya Rozzaaqy Widya Putri</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Meisya Rozzaaqy Widya Putri</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 17 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Mohamad Rifky Ramadani" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MR</div>
-                </div>
-                <div class="member-name">Mohamad Rifky Ramadani</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Mohamad Rifky Ramadani</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 18 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Muhamad Naufal Afrizal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MN</div>
-                </div>
-                <div class="member-name">Muhamad Naufal Afrizal</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Muhamad Naufal Afrizal</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 19 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Muhammad Fachri Fairuz" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MF</div>
-                </div>
-                <div class="member-name">Muhammad Fachri Fairuz</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Muhammad Fachri Fairuz</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 20 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Muhammad Rizki Desca Firmansyah" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">MR</div>
-                </div>
-                <div class="member-name">Muhammad Rizki Desca Firmansyah</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Muhammad Rizki Desca Firmansyah</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 21 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Nadia Mecca Aurellia" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">NM</div>
-                </div>
-                <div class="member-name">Nadia Mecca Aurellia</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Nadia Mecca Aurellia</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 22 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Nadila Ristanti" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">NR</div>
-                </div>
-                <div class="member-name">Nadila Ristanti</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Nadila Ristanti</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 23 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Nahrul Mubarok" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">NM</div>
-                </div>
-                <div class="member-name">Nahrul Mubarok</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Nahrul Mubarok</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 24 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Ni Komang Ayu Amanda Anastasya" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">NK</div>
-                </div>
-                <div class="member-name">Ni Komang Ayu Amanda Anastasya</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Ni Komang Ayu Amanda Anastasya</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 25 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Raffi Ahmad Alfahrezy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">RA</div>
-                </div>
-                <div class="member-name">Raffi Ahmad Alfahrezy</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Raffi Ahmad Alfahrezy</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 26 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Rendra Adnan Farid" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">RA</div>
-                </div>
-                <div class="member-name">Rendra Adnan Farid</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Rendra Adnan Farid</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 27 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="REYNARA PUTRA RAMADHAN" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">RR</div>
-                </div>
-                <div class="member-name">Reynara Putra Ramadhan</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Reynara Putra Ramadhan</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 28 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Reyhan Arsa Mulia Gutama" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">RA</div>
-                </div>
-                <div class="member-name">Reyhan Arsa Mulia Gutama</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Reyhan Arsa Mulia Gutama</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 29 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Rijaldi Aziz Nur Khamim" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">RA</div>
-                </div>
-                <div class="member-name">Rijaldi Aziz Nur Khamim</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Rijaldi Aziz Nur Khamim</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 30 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Shelma A’yunina Ro’ifin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">SA</div>
-                </div>
-                <div class="member-name">Shelma A’yunina Ro’ifin</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Shelma A’yunina Ro’ifin</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 31 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Talita Almira Esfiana" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">TA</div>
-                </div>
-                <div class="member-name">Talita Almira Esfiana</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Talita Almira Esfiana</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 32 -->
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="member-photo">
-                  <img src="assets/ikon.png" alt="Unggul Wahyudiningrat Eka Atmaja" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="photo-fallback" style="display:none;">UE</div>
-                </div>
-                <div class="member-name">Unggul Wahyudiningrat Eka Atmaja</div>
-                <div class="member-role">ANGGOTA</div>
-                <div class="flip-instruction">Klik untuk flip</div>
-              </div>
-              <div class="flip-card-back">
-                <div class="member-name">Unggul Wahyudiningrat Eka Atmaja</div>
-                <div class="member-role">Mahasiswa TI B</div>
-                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
-                <div class="flip-instruction">Klik untuk kembali</div>
-              </div>
-            </div>
-          </div>
-
+          <!-- Anggota akan diisi oleh JavaScript dengan flip card -->
         </div>
       </div>
     </div>
@@ -814,14 +115,52 @@
   <script src="js/app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.flip-card').forEach(card => {
-        card.addEventListener('click', () => card.classList.toggle('flipped'));
-      });
+      // Load anggota data
+      const anggotaGrid = document.querySelector('.anggota-grid');
+      if (anggotaGrid) {
+        const anggotaList = [
+          "Adelia Wahyu Bima Sakti", "Aisha Calluella Putri Wijaya", "Alifiyan Rezky Pratama",
+          "Aswin Akmal Rizantha", "Bayu Putra Pratama", "Devika Novalina", "Dhia Al Fitria",
+          "Dila Rahma Wakhida", "Diva Islamy Rizky Akbar", "Ema Netasari", "Fajar Dwi Prayitno",
+          "Febrinda Eka Prasetyo", "Fibi Dita Salsabilla", "Fidlela Latifa Salsabila",
+          "Gladis Ayu Diapitaloka", "Meisya Rozzaaqy Widya Putri", "Mohamad Rifky Ramadani",
+          "Muhamad Naufal Afrizal", "Muhammad Fachri Fairuz", "Muhammad Rizki Desca Firmansyah",
+          "Nadia Mecca Aurellia", "Nadila Ristanti", "Nahrul Mubarok", 
+          "Ni Komang Ayu Amanda Anastasya", "Raffi Ahmad Alfahrezy", "Rendra Adnan Farid",
+          "Reynara Putra Ramadhan", "Reyhan Arsa Mulia Gutama", "Rijaldi Aziz Nur Khamim",
+          "Shelma A'yunina Ro'ifin", "Talita Almira Esfiana", "Unggul Wahyudiningrat Eka Atmaja"
+        ];
 
-      // stagger delay
-      document.querySelectorAll('.flip-card').forEach((el, i) => {
-        el.style.animationDelay = (i * 0.08) + 's';
-      });
+        anggotaList.forEach((nama, index) => {
+          const inisial = nama.split(' ').map(n => n[0]).join('').substring(0, 2);
+          const card = document.createElement('div');
+          card.className = 'flip-card';
+          card.style.animationDelay = (index * 0.08) + 's';
+          
+          card.innerHTML = `
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="member-photo">
+                  <img src="assets/ikon.png" alt="${nama}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div class="photo-fallback" style="display:none;">${inisial}</div>
+                </div>
+                <div class="member-name">${nama}</div>
+                <div class="member-role">ANGGOTA</div>
+                <div class="flip-instruction">Klik untuk flip</div>
+              </div>
+              <div class="flip-card-back">
+                <div class="member-name">${nama}</div>
+                <div class="member-role">Mahasiswa TI B</div>
+                <div class="member-status">Teknik Informatika UNISBA Blitar</div>
+                <div class="flip-instruction">Klik untuk kembali</div>
+              </div>
+            </div>
+          `;
+          
+          card.addEventListener('click', () => card.classList.toggle('flipped'));
+          anggotaGrid.appendChild(card);
+        });
+      }
     });
   </script>
 </body>

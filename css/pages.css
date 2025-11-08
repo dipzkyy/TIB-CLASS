@@ -1,0 +1,386 @@
+/* ========== GALLERY STYLES ========== */
+.gallery-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 1.5rem;
+}
+
+.gallery-container .page-header {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.3);
+}
+
+.gallery-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gallery-info {
+  padding: 1.2rem;
+}
+
+.gallery-info h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.gallery-info p {
+  color: #ccc;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.gallery-date {
+  font-size: 0.75rem;
+  color: #bde3ff;
+}
+
+/* ========== MEMBERS PAGE STYLES ========== */
+.members-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 1.5rem;
+}
+
+.members-container .page-header {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* ========== PENGURUS SECTION ========== */
+.pengurus-section {
+  margin-bottom: 2.5rem;
+}
+
+.pengurus-section .section-title {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Grid untuk Pengurus — 3 card per baris */
+.pengurus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Card Pengurus Biasa (tanpa flip) */
+.pengurus-card {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 1.2rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.pengurus-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(45deg, #00bfff, #0080ff, #00bfff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.7;
+}
+
+.pengurus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 191, 255, 0.3);
+}
+
+/* Badge Pengurus */
+.pengurus-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 9999px;
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== FLIP CARD UNTUK ANGGOTA SAJA ========== */
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 180px;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.flip-card-front::before,
+.flip-card-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(45deg, #00bfff, #0080ff, #00bfff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.7;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(0, 191, 255, 0.1);
+}
+
+/* Foto Profil - Crop Bundar */
+.member-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 0.4rem;
+  background: linear-gradient(45deg, #00bfff, #0080ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.photo-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.member-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.member-role {
+  color: var(--primary-blue);
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.member-status {
+  color: #bde3ff;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.flip-instruction {
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+  animation: pulse 2s infinite;
+}
+
+/* ========== GRID ANGGOTA ========== */
+.anggota-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #bde3ff;
+  font-weight: 400;
+}
+
+/* === GAYA DASAR JADWAL === */
+.jadwal-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 1.5rem;
+}
+
+.jadwal-container .page-header {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* === GRID UNTUK HARI === */
+.jadwal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+/* === KARTU HARI === */
+.hari-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hari-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* === JUDUL HARI === */
+.hari-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #918c84ff;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+/* === LIST MATA KULIAH === */
+.matkul-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* === ITEM MATA KULIAH === */
+.matkul-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  margin-bottom: 0.7rem;
+  transition: background 0.3s ease;
+}
+
+.matkul-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.matkul-nama {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.matkul-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.matkul-waktu {
+  color: #9fdfff;
+  font-size: 0.8rem;
+}

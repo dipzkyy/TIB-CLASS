@@ -1,0 +1,301 @@
+/* ========== HERO SECTION ========== */
+#hero {
+  padding-top: 2rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.logo-group {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+}
+
+.title-group {
+  text-align: left;
+}
+
+.main-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.title-line {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Efek tangga menurun */
+.title-line:nth-child(1) {
+  margin-left: 0;
+}
+
+.title-line:nth-child(2) {
+  margin-left: 1.5rem;
+}
+
+.title-line:nth-child(3) {
+  margin-left: 3rem;
+}
+
+.title-line.accent {
+  font-size: 4.5rem;
+  color: #00bfff;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #bde3ff;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.instagram-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.3rem;
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5851db,
+    #833ab4,
+    #c13584,
+    #e1306c,
+    #fd1d1d
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4);
+  font-size: 0.9rem;
+}
+
+.instagram-button:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 6px 20px rgba(225, 48, 108, 0.6);
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ========== TYPEWRITER ========== */
+.typewriter-container {
+  position: relative;
+  white-space: pre-wrap;
+  overflow: hidden;
+  min-height: 120px;
+  font-size: 1rem;
+  color: #bfefff;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  line-height: 1.6;
+  animation: blink 0.7s infinite;
+  max-width: 500px;
+}
+
+.typewriter-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 191, 255, 0.3),
+    rgba(0, 191, 255, 0.6),
+    rgba(0, 191, 255, 0.3),
+    transparent
+  );
+  animation: glowSweep 3s ease-in-out infinite;
+  border-radius: 1rem;
+}
+
+@keyframes glowSweep {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    border-color: var(--primary-blue);
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+/* ========== INTERACTIVE MENU ========== */
+#interactive-menu {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  scroll-margin-top: 2rem;
+}
+
+.circle-menu-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.circle-menu {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #bde3ff;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  z-index: 10;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+}
+
+.circle-menu:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+}
+
+.circle-menu.active {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ripple & menu buttons */
+.ripple-effect {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ripple-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(0, 191, 255, 0.3);
+  opacity: 0;
+  animation: rippleExpand 1.2s ease-out;
+}
+
+/* menu buttons basic - JARAK DIPERBESAR */
+.menu-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; /* Diperbesar dari 1.8rem */
+  z-index: 15;
+}
+
+.menu-buttons.menu-open {
+  display: flex;
+}
+
+.menu-btn {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  background: linear-gradient(90deg, #007bff, #00cfff);
+  padding: 10px 20px;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition);
+  position: absolute;
+  font-size: 0.85rem;
+  z-index: 20;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  min-width: 130px;
+  text-align: center;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.8);
+}
+
+.menu-instruction {
+  animation: pulse 2s infinite;
+  font-size: 0.9rem;
+}

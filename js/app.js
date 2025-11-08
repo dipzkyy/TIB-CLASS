@@ -2,9 +2,12 @@
 class TI_B_App {
   constructor(){
     this.isMobile = window.innerWidth <= 768;
+    this.isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+    this.observer = null;
+    this.scrollObserver = null;
     this.init();
   }
-  
+
   init(){
     this.setupGlobalEvents();
     this.setupNavigation();
@@ -12,8 +15,10 @@ class TI_B_App {
     this.setCurrentDate();
     this.setupMobileMenu();
     this.setupResponsiveHandlers();
+    this.setupSPAHandlers();
+    this.setupBackButton();
   }
-  
+
   setupGlobalEvents(){
     window.addEventListener('error', this.handleGlobalError);
     window.addEventListener('load', ()=> {
@@ -21,44 +26,41 @@ class TI_B_App {
       sessionStorage.setItem('pageLoaded','true');
     });
   }
-  
+
   setupNavigation(){
-    // Handle internal navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // Smooth scroll untuk internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
-        if (link.getAttribute('href').startsWith('#')) {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').substring(1);
-          const el = document.getElementById(targetId);
-          if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-          
-          // Update active nav link
-          document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
-          link.classList.add('active');
-          
-          // Close mobile menu if open
-          this.closeMobileMenu();
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       });
     });
 
-    // Update active nav link on scroll
+    // Active nav link berdasarkan scroll position
     let scrollTimeout;
     window.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         const sections = document.querySelectorAll('.page-section');
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         let current = '';
         sections.forEach(section => {
-          const sectionTop = section.offsetTop;
+          const sectionTop = section.offsetTop - 100;
           const sectionHeight = section.clientHeight;
-          if (window.scrollY >= (sectionTop - 200)) {
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
             current = section.getAttribute('id');
           }
         });
-        
+
         navLinks.forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${current}`) {
@@ -67,33 +69,32 @@ class TI_B_App {
         });
       }, 100);
     });
-    
-    // Handle external links
+
+    // External links
     document.querySelectorAll('a.external').forEach(link => {
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
     });
   }
-  
+
   setupMobileMenu() {
     const toggle = document.querySelector('.mobile-menu-toggle');
     const menu = document.querySelector('.nav-menu');
-    
+
     if (toggle && menu) {
-      toggle.addEventListener('click', () => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         toggle.classList.toggle('active');
         menu.classList.toggle('active');
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
       });
-      
-      // Close menu when clicking on links
+
       menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           this.closeMobileMenu();
         });
       });
-      
-      // Close menu when clicking outside
+
       document.addEventListener('click', (e) => {
         if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
           this.closeMobileMenu();
@@ -101,104 +102,142 @@ class TI_B_App {
       });
     }
   }
-  
+
   closeMobileMenu() {
     const toggle = document.querySelector('.mobile-menu-toggle');
     const menu = document.querySelector('.nav-menu');
-    
+
     if (toggle && menu) {
       toggle.classList.remove('active');
       menu.classList.remove('active');
       document.body.style.overflow = '';
     }
   }
-  
+
   setupPageTransitions(){
     this.initializeIntersectionObserver();
   }
-  
+
   initializeIntersectionObserver(){
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if (entry.isIntersecting) entry.target.classList.add('section-visible');
-      });
-    }, { 
-      threshold: this.isMobile ? 0.05 : 0.15,
-      rootMargin: this.isMobile ? '0px 0px -10px 0px' : '0px 0px -50px 0px'
-    });
-    
-    document.querySelectorAll('.page-section').forEach(s => observer.observe(s));
-    
-    // Scroll elements observer dengan threshold berbeda untuk mobile
-    const scrollObserver = new IntersectionObserver((entries)=>{
+    // Hapus observer lama jika ada
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+    if (this.scrollObserver) {
+      this.scrollObserver.disconnect();
+    }
+
+    // Observer untuk section utama
+    this.observer = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('section-visible');
         } else {
-          entry.target.classList.remove('visible');
+          // Reset saat keluar viewport untuk auto refresh
+          entry.target.classList.remove('section-visible');
         }
       });
     }, { 
-      threshold: this.isMobile ? 0.05 : 0.12,
-      rootMargin: this.isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px'
+      threshold: this.isMobile ? 0.05 : 0.1,
+      rootMargin: this.isMobile ? '0px 0px -10px 0px' : '0px 0px -30px 0px'
     });
-    
-    document.querySelectorAll('.scroll-element').forEach(el => scrollObserver.observe(el));
+
+    // Observer untuk scroll elements dengan auto refresh
+    this.scrollObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-visible', 'stagger-visible');
+        } else {
+          // Reset saat keluar viewport untuk auto refresh
+          entry.target.classList.remove('scroll-visible', 'stagger-visible');
+        }
+      });
+    }, { 
+      threshold: this.isMobile ? 0.05 : 0.1,
+      rootMargin: this.isMobile ? '0px 0px -10px 0px' : '0px 0px -30px 0px'
+    });
+
+    document.querySelectorAll('.page-section').forEach(s => this.observer.observe(s));
+    document.querySelectorAll('.scroll-element, .stagger-item').forEach(el => this.scrollObserver.observe(el));
   }
-  
+
   setCurrentDate(){
     const dateElement = document.getElementById('current-date');
     if (!dateElement) return;
-    
+
     const updateDate = ()=>{
       const today = new Date();
       const options = { 
-        weekday:'long', 
-        year:'numeric', 
-        month:'long', 
-        day:'numeric', 
-        hour:'2-digit', 
-        minute:'2-digit'
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric'
       };
-      
-      // Format yang lebih pendek untuk mobile
+
       if (this.isMobile) {
         options.weekday = 'short';
         options.month = 'short';
       }
-      
+
       dateElement.textContent = today.toLocaleDateString('id-ID', options);
     };
-    
+
     updateDate();
     setInterval(updateDate, 60000);
   }
-  
+
   setupResponsiveHandlers() {
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         const wasMobile = this.isMobile;
-        this.isMobile = window.innerWidth <= 768;
+        const wasTablet = this.isTablet;
         
-        // Jika status mobile berubah, reinitialize observer
-        if (wasMobile !== this.isMobile) {
+        this.isMobile = window.innerWidth <= 768;
+        this.isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+
+        if (wasMobile !== this.isMobile || wasTablet !== this.isTablet) {
           this.initializeIntersectionObserver();
           this.setCurrentDate();
+          this.setupBackButton();
         }
       }, 250);
     });
-    
-    // Handle orientation changes
+
     window.addEventListener('orientationchange', () => {
       setTimeout(() => {
         this.isMobile = window.innerWidth <= 768;
+        this.isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
         this.initializeIntersectionObserver();
+        this.setupBackButton();
       }, 300);
     });
   }
-  
+
+  setupSPAHandlers() {
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('back-button') || 
+          e.target.closest('.back-button')) {
+        e.preventDefault();
+        window.history.back();
+      }
+    });
+  }
+
+  setupBackButton() {
+    const backButtons = document.querySelectorAll('.back-button');
+    const backNotice = document.querySelector('.back-notice');
+    
+    if (this.isMobile || this.isTablet) {
+      backButtons.forEach(btn => btn.style.display = 'none');
+      if (backNotice) backNotice.style.display = 'block';
+    } else {
+      backButtons.forEach(btn => btn.style.display = 'inline-flex');
+      if (backNotice) backNotice.style.display = 'none';
+    }
+  }
+
   handleGlobalError(e){ 
     console.error('Global error:', e.error); 
   }

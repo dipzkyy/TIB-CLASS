@@ -175,3 +175,111 @@
   transform:scale(1.05); 
   box-shadow:0 6px 20px rgba(255,255,255,0.3) !important 
 }
+/* Scroll Animation Styles */
+.scroll-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.scroll-element.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Animation */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-item.stagger-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+/* Hover Effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.7));
+}
+
+/* Aurora Text Effect */
+.aurora-text {
+  background: linear-gradient(
+    45deg,
+    #00bfff,
+    #6a5acd,
+    #00bfff
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraShift 3s ease-in-out infinite;
+}
+
+@keyframes auroraShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Menu Instruction Animation */
+.menu-instruction {
+  animation: pulse 2s infinite;
+}
+
+/* Card Content */
+.card-content h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.card-content p {
+  color: #bde3ff;
+  line-height: 1.6;
+}
+
+/* Additional Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Focus States for Accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
