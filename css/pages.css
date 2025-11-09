@@ -384,3 +384,26 @@
   color: #9fdfff;
   font-size: 0.8rem;
 }
+/* Tambahkan di akhir file pages.css */
+
+/* Style khusus untuk anggota yang juga pengurus */
+/* Style khusus untuk anggota yang juga pengurus */
+.pengurus-member {
+  position: relative;
+}
+
+.pengurus-member::before {
+  content: "⭐";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.8rem;
+  z-index: 5;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
