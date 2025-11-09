@@ -115,42 +115,77 @@
   <script src="js/app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Load anggota data
+      // Load anggota data termasuk pengurus - DIURUTKAN ASCENDING
       const anggotaGrid = document.querySelector('.anggota-grid');
       if (anggotaGrid) {
         const anggotaList = [
-          "Adelia Wahyu Bima Sakti", "Aisha Calluella Putri Wijaya", "Alifiyan Rezky Pratama",
-          "Aswin Akmal Rizantha", "Bayu Putra Pratama", "Devika Novalina", "Dhia Al Fitria",
-          "Dila Rahma Wakhida", "Diva Islamy Rizky Akbar", "Ema Netasari", "Fajar Dwi Prayitno",
-          "Febrinda Eka Prasetyo", "Fibi Dita Salsabilla", "Fidlela Latifa Salsabila",
-          "Gladis Ayu Diapitaloka", "Meisya Rozzaaqy Widya Putri", "Mohamad Rifky Ramadani",
-          "Muhamad Naufal Afrizal", "Muhammad Fachri Fairuz", "Muhammad Rizki Desca Firmansyah",
-          "Nadia Mecca Aurellia", "Nadila Ristanti", "Nahrul Mubarok", 
-          "Ni Komang Ayu Amanda Anastasya", "Raffi Ahmad Alfahrezy", "Rendra Adnan Farid",
-          "Reynara Putra Ramadhan", "Reyhan Arsa Mulia Gutama", "Rijaldi Aziz Nur Khamim",
-          "Shelma A'yunina Ro'ifin", "Talita Almira Esfiana", "Unggul Wahyudiningrat Eka Atmaja"
+          // Pengurus
+          { nama: "Mochamad Nazar Sirot", role: "KETUA KELAS" },
+          { nama: "Zainun Abidin", role: "WAKIL KETUA" },
+          { nama: "Tahta Alfina Pagelaran", role: "SEKRETARIS" },
+          { nama: "Jazilatun Nabilla", role: "BENDAHARA" },
+          // Anggota biasa
+          { nama: "Adelia Wahyu Bima Sakti", role: "ANGGOTA" },
+          { nama: "Aisha Calluella Putri Wijaya", role: "ANGGOTA" },
+          { nama: "Alifiyan Rezky Pratama", role: "ANGGOTA" },
+          { nama: "Aswin Akmal Rizantha", role: "ANGGOTA" },
+          { nama: "Bayu Putra Pratama", role: "ANGGOTA" },
+          { nama: "Devika Novalina", role: "ANGGOTA" },
+          { nama: "Dhia Al Fitria", role: "ANGGOTA" },
+          { nama: "Dila Rahma Wakhida", role: "ANGGOTA" },
+          { nama: "Diva Islamy Rizky Akbar", role: "ANGGOTA" },
+          { nama: "Ema Netasari", role: "ANGGOTA" },
+          { nama: "Fajar Dwi Prayitno", role: "ANGGOTA" },
+          { nama: "Febrinda Eka Prasetyo", role: "ANGGOTA" },
+          { nama: "Fibi Dita Salsabilla", role: "ANGGOTA" },
+          { nama: "Fidlela Latifa Salsabila", role: "ANGGOTA" },
+          { nama: "Gladis Ayu Diapitaloka", role: "ANGGOTA" },
+          { nama: "Meisya Rozzaaqy Widya Putri", role: "ANGGOTA" },
+          { nama: "Mohamad Rifky Ramadani", role: "ANGGOTA" },
+          { nama: "Muhamad Naufal Afrizal", role: "ANGGOTA" },
+          { nama: "Muhammad Fachri Fairuz", role: "ANGGOTA" },
+          { nama: "Muhammad Rizki Desca Firmansyah", role: "ANGGOTA" },
+          { nama: "Nadia Mecca Aurellia", role: "ANGGOTA" },
+          { nama: "Nadila Ristanti", role: "ANGGOTA" },
+          { nama: "Nahrul Mubarok", role: "ANGGOTA" },
+          { nama: "Ni Komang Ayu Amanda Anastasya", role: "ANGGOTA" },
+          { nama: "Raffi Ahmad Alfahrezy", role: "ANGGOTA" },
+          { nama: "Rendra Adnan Farid", role: "ANGGOTA" },
+          { nama: "Reynara Putra Ramadhan", role: "ANGGOTA" },
+          { nama: "Reyhan Arsa Mulia Gutama", role: "ANGGOTA" },
+          { nama: "Rijaldi Aziz Nur Khamim", role: "ANGGOTA" },
+          { nama: "Shelma A'yunina Ro'ifin", role: "ANGGOTA" },
+          { nama: "Talita Almira Esfiana", role: "ANGGOTA" },
+          { nama: "Unggul Wahyudiningrat Eka Atmaja", role: "ANGGOTA" }
         ];
 
-        anggotaList.forEach((nama, index) => {
-          const inisial = nama.split(' ').map(n => n[0]).join('').substring(0, 2);
+        // Urutkan berdasarkan nama secara ascending (A-Z)
+        anggotaList.sort((a, b) => a.nama.localeCompare(b.nama));
+
+        anggotaList.forEach((member, index) => {
+          const inisial = member.nama.split(' ').map(n => n[0]).join('').substring(0, 2);
           const card = document.createElement('div');
           card.className = 'flip-card';
           card.style.animationDelay = (index * 0.08) + 's';
           
+          // Tentukan kelas khusus untuk pengurus
+          const isPengurus = member.role !== "ANGGOTA";
+          const pengurusClass = isPengurus ? 'pengurus-member' : '';
+          
           card.innerHTML = `
             <div class="flip-card-inner">
-              <div class="flip-card-front">
+              <div class="flip-card-front ${pengurusClass}">
                 <div class="member-photo">
-                  <img src="assets/ikon.png" alt="${nama}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <img src="assets/ikon.png" alt="${member.nama}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                   <div class="photo-fallback" style="display:none;">${inisial}</div>
                 </div>
-                <div class="member-name">${nama}</div>
-                <div class="member-role">ANGGOTA</div>
+                <div class="member-name">${member.nama}</div>
+                <div class="member-role">${member.role}</div>
                 <div class="flip-instruction">Klik untuk flip</div>
               </div>
               <div class="flip-card-back">
-                <div class="member-name">${nama}</div>
-                <div class="member-role">Mahasiswa TI B</div>
+                <div class="member-name">${member.nama}</div>
+                <div class="member-role">${member.role}</div>
                 <div class="member-status">Teknik Informatika UNISBA Blitar</div>
                 <div class="flip-instruction">Klik untuk kembali</div>
               </div>

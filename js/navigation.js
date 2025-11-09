@@ -75,8 +75,8 @@ class CircleMenu {
     animateMenuButtons() {
         const buttons = this.menuButtons.querySelectorAll('.menu-btn');
         
-        // Radius berbeda untuk mobile dan desktop
-        const radius = this.isMobile ? 80 : 140;
+        // Radius berbeda untuk mobile dan desktop - DIPERBESAR
+        const radius = this.isMobile ? 120 : 180; // Diperbesar dari 80/140
         
         buttons.forEach((btn, index) => {
             // Hitung posisi untuk 4 tombol (sudut 0°, 90°, 180°, 270°)
