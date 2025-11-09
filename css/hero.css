@@ -262,7 +262,7 @@
   display: none;
   flex-direction: column;
   align-items: center;
-  gap: 3.5rem; /* Diperbesar dari 2.5rem */
+  gap: 2.5rem; /* Diperbesar dari 1.8rem */
   z-index: 15;
 }
 
@@ -298,90 +298,4 @@
 .menu-instruction {
   animation: pulse 2s infinite;
   font-size: 0.9rem;
-}
-
-/* ========== MOBILE STYLES ========== */
-@media (max-width: 768px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: left;
-  }
-
-  .hero-left {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .title-group {
-    text-align: left;
-  }
-
-  .title-line {
-    font-size: 2.5rem !important;
-  }
-  
-  .title-line.accent {
-    font-size: 3rem !important;
-  }
-
-  .main-title {
-    gap: 0.8rem !important;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .instagram-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-
-  .hero-right {
-    justify-content: flex-start;
-  }
-
-  .typewriter-container {
-    font-size: 0.9rem;
-    padding: 1.2rem;
-    min-height: 100px;
-  }
-
-  /* Circle menu mobile */
-  .circle-menu {
-    width: 100px;
-    height: 100px;
-    font-size: 0.8rem;
-  }
-
-  .menu-btn {
-    min-width: 110px;
-    font-size: 0.75rem;
-    padding: 8px 16px;
-  }
-
-  .menu-buttons {
-    gap: 3rem; /* Tetap jarak besar di mobile */
-  }
-}
-
-/* ========== VERY SMALL MOBILE ========== */
-@media (max-width: 480px) {
-  .title-line {
-    font-size: 2rem !important;
-  }
-  
-  .title-line.accent {
-    font-size: 2.5rem !important;
-  }
-
-  .instagram-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  .menu-buttons {
-    gap: 2.8rem;
-  }
 }
