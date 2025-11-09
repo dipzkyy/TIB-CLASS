@@ -96,6 +96,47 @@
       color: white;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .loading-text {
+        font-size: 1.3rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .progress-container {
+        width: 250px;
+        height: 25px;
+      }
+
+      .progress-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .loading-text {
+        font-size: 1.1rem;
+      }
+
+      .progress-container {
+        width: 220px;
+        height: 22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -118,10 +159,17 @@
   <div id="progressText" class="progress-text">Memuat...</div>
 
   <script>
+    // Deteksi mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     const fill = document.getElementById('fill');
     const text = document.getElementById('progressText');
     const percent = document.getElementById('progressPercent');
     let progress = 0;
+
+    // Adjust timing for mobile
+    const intervalTime = isMobile ? 120 : 90;
+    const fallbackTime = isMobile ? 10000 : 7000; // 10 detik untuk mobile
 
     const timer = setInterval(() => {
       progress += Math.floor(Math.random() * 10) + 5;
@@ -145,12 +193,25 @@
           window.location.href = 'index.html';
         }, 800);
       }
-    }, 90);
+    }, intervalTime);
 
     // fallback otomatis jika loading macet
     setTimeout(() => {
-      if (progress < 100) window.location.href = 'index.html';
-    }, 7000);
+      if (progress < 100) {
+        text.textContent = 'Lanjutkan...';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
+      }
+    }, fallbackTime);
+
+    // Preload index.html untuk memastikan transisi lancar
+    window.addEventListener('load', function() {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = 'index.html';
+      document.head.appendChild(link);
+    });
   </script>
 </body>
 </html>

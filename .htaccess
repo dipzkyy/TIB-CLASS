@@ -1,0 +1,14 @@
+# Force loading.html as initial page
+DirectoryIndex loading.html index.html
+
+# Cache control for loading page
+<Files "loading.html">
+  ExpiresActive Off
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+</Files>
+
+# Mobile detection and redirect (optional)
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} "android|blackberry|iphone|ipod|iemobile|opera mobile|palmos|webos|googlebot-mobile" [NC]
+RewriteRule ^$ /loading.html [L]

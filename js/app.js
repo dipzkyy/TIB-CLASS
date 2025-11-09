@@ -5,10 +5,35 @@ class TI_B_App {
     this.isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
     this.observer = null;
     this.scrollObserver = null;
+    
+    // Check if we need to redirect to loading screen
+    this.checkLoadingRedirect();
     this.init();
   }
 
+  checkLoadingRedirect() {
+    // Only redirect if we're on the main page and haven't shown loading yet
+    const currentPage = window.location.pathname.split('/').pop();
+    const hasSeenLoading = sessionStorage.getItem('hasSeenLoading');
+    
+    if (currentPage === 'index.html' && !hasSeenLoading) {
+      sessionStorage.setItem('hasSeenLoading', 'true');
+      window.location.href = 'loading.html';
+      return;
+    }
+    
+    // If we're coming from loading page, mark as loaded
+    if (document.referrer.includes('loading.html')) {
+      sessionStorage.setItem('hasSeenLoading', 'true');
+    }
+  }
+
   init(){
+    // Only initialize if we're not redirecting to loading
+    if (window.location.pathname.includes('loading.html')) {
+      return;
+    }
+    
     this.setupGlobalEvents();
     this.setupNavigation();
     this.setupPageTransitions();
@@ -247,3 +272,9 @@ class TI_B_App {
 document.addEventListener('DOMContentLoaded', ()=>{ 
   new TI_B_App();
 });
+
+// Fallback: If user accesses index.html directly, redirect to loading
+if (window.location.pathname.endsWith('index.html') && !sessionStorage.getItem('hasSeenLoading')) {
+  sessionStorage.setItem('hasSeenLoading', 'true');
+  window.location.href = 'loading.html';
+}
